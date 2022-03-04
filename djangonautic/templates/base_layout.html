@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles</title>
+</head>
+<body>
+    <div class="wrapper">
+    <div class="logoimg"><a href="{% url 'articles:list' %}"><img src="{% static 'logo.png' %}"></a></div>
+    <nav>
+        <ul style="list-style-type: none;">
+            {% if user.is_authenticated %}
+            <li>
+                <form class="sign-actions" action="{% url 'accounts:logout' %}" method="post">
+                    {% csrf_token %}
+                    <button id="logout-button" type="submit">Logout</button>
+                    </form>
+            </li>
+            <li><button id="create-article-button"><a href={% url 'articles:create' %}>Create a new article</a></button> </li>
+            {% else %}
+            <li>
+                    <button id="login-button"><a href={% url 'accounts:login' %}>Log in!</a></button>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% block content %}
+    {% endblock %}
+    </div>
+</body>
+</html>

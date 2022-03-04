@@ -1,0 +1,16 @@
+{% extends 'base_layout.html' %}
+{% block content%}
+
+<div class="article-detail"> 
+    <div class="article">
+        <h2>{{article.title}}</h2>
+        <h5>by {{article.author}} on {{article.date}}</h5>
+        <div class="article-text">
+        <p>{{article.body}}<p> </div>
+    </div>
+    {% if article.thumb.url != None %}
+    <div class="userimgdiv"><img id='userimgid' src="{{article.thumb.url}}"></div>
+    {% endif %}
+
+</div>
+{% endblock%}

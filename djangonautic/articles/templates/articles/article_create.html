@@ -1,0 +1,13 @@
+{% extends 'base_layout.html' %}
+{% block content %}
+<div class="create-article">
+<h2>Create an awesome new article</h2></div>
+<div><h4>Create an awesome new article</h4></div>
+<form id="new-post" class="new-entry-form" action="." method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ entryform }}
+</form>
+    <button id="submit-button" form="new-post" type='submit'>Share with your buddies!"</button>
+
+
+{% endblock %}

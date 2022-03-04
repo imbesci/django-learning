@@ -1,0 +1,15 @@
+{% extends 'base_layout.html' %}
+{% block content %}
+
+<h1>Log In</h1>
+<form class="site-form" action='.' method="post">
+    {% csrf_token %}
+    {{ form }}
+    {% if request.GET.auth_failed %}
+        <input type="hidden" name="auth_failed" value="{{ request.GET.auth_failed }}">
+    {% endif %}
+    <input type="submit" value="Login">
+</form>
+
+<h4>Dont have an account? <a href={% url 'accounts:signup' %}>Click here</a> to sign up now!</h4>
+{% endblock %} 
